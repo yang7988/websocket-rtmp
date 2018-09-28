@@ -21,7 +21,7 @@ public class WebSocketRunnable implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketRunnable.class);
 
     public void run() {
-        int webSocketPort = 9094;
+        int webSocketPort = 9092;
         EventLoopGroup workGroupLoop = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
         try {
@@ -34,7 +34,7 @@ public class WebSocketRunnable implements Runnable {
                             ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec());
                             ch.pipeline().addLast("ChunkedWriter", new ChunkedWriteHandler());
                             ch.pipeline().addLast("HttpAggregator", new HttpObjectAggregator(65535));
-                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler("/ws", "haofei", true));
+                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler("ws://127.0.0.1:9092/wsEntry", "haofei", true));
                             ch.pipeline().addLast("WsBinaryDecoder", new WebSocketFrameDecoder()); // ws解码成字节
                             ch.pipeline().addLast("WsEncoder", new WebSocketFramePrepender()); // 字节编码成ws
                             ch.pipeline().addLast(new VideoPlayerHandler());
