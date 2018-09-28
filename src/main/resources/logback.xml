@@ -1,0 +1,20 @@
+<configuration>
+
+    <property name="moduleName" value="websocket-rtmp-service"/>
+    <property name="charset" value="utf-8"/>
+    <property name="pattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %line - %msg%n"/>
+
+    <contextName>${moduleName}</contextName>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+            <charset>${charset}</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
