@@ -15,9 +15,15 @@
     <script type="text/javascript" src="/js/jsmpeg.min.js" />
     <script type="text/javascript">
         var canvas = document.getElementById('video-canvas');
-        var url = 'ws://' + '127.0.0.1:9092/wsEntry';
-        var config = {canvas: canvas, autoplay: true, audio: false, video: true, protocols: 'haofei'};
+        var url = 'ws://' + '183.47.216.134:9092/wsEntry';
+        var config = {
+            canvas: canvas,
+            autoplay: true,
+            audio: false,
+            video: true,
+            protocols: 'haofei',};
         var player = new JSMpeg.Player(url, config);
+
     </script>
 </body>
 

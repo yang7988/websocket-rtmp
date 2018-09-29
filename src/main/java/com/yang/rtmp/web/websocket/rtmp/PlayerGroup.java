@@ -24,6 +24,7 @@ public class PlayerGroup {
         }
         BinaryWebSocketFrame frame = new BinaryWebSocketFrame(message);
         message.retain();
+        System.out.println(channelGroup.name() + " " + channelGroup.size() + " 广播到一条数据流msg" + message);
         channelGroup.writeAndFlush(frame);
     }
 
