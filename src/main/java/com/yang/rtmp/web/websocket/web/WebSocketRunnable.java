@@ -34,7 +34,7 @@ public class WebSocketRunnable implements Runnable {
                             ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec());
                             ch.pipeline().addLast("ChunkedWriter", new ChunkedWriteHandler());
                             ch.pipeline().addLast("HttpAggregator", new HttpObjectAggregator(65535));
-                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler("/wsEntry", "haofei", true));
+                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler("/websocket", "haofei", true));
                             ch.pipeline().addLast("WsBinaryDecoder", new WebSocketFrameDecoder()); // ws解码成字节
                             ch.pipeline().addLast("WsEncoder", new WebSocketFramePrepender()); // 字节编码成ws
                             ch.pipeline().addLast(new VideoPlayerHandler());
