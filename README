@@ -1,0 +1,7 @@
+RTMP推流协议
+
+ffmpeg -re -i /root/websocket-rtmp/thunder.mp4 -vcodec copy -acodec copy -b:v 800k -b:a 32k -f flv rtmp://183.47.216.134:1935/videotest
+
+ffmpeg转发rtmp流协议到websocket
+
+rtmp://47.106.138.237/live_sd/xxx -max_muxing_queue_size 1024 -f mpegts -codec:v mpeg1video -acodec libfaac -s 540x960 -b:v 1500k -r 30 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k udp://183.47.216.134:9094
