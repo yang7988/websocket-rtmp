@@ -1,6 +1,5 @@
-package com.yang.rtmp.web.websocket.web;
+package com.yang.rtmp.web.websocket;
 
-import com.yang.rtmp.web.websocket.rtmp.UdpMpegTsHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;

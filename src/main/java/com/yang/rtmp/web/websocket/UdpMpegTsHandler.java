@@ -1,4 +1,4 @@
-package com.yang.rtmp.web.websocket.rtmp;
+package com.yang.rtmp.web.websocket;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

@@ -1,4 +1,4 @@
-package com.yang.rtmp.web.websocket.web;
+package com.yang.rtmp.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

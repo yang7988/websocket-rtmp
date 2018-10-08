@@ -1,8 +1,5 @@
-package com.yang.rtmp.web.websocket.web;
+package com.yang.rtmp.web.websocket;
 
-import com.yang.rtmp.web.websocket.rtmp.VideoPlayerHandler;
-import com.yang.rtmp.web.websocket.rtmp.WebSocketFrameDecoder;
-import com.yang.rtmp.web.websocket.rtmp.WebSocketFramePrepender;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

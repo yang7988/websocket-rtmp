@@ -1,4 +1,4 @@
-package com.yang.rtmp.web.websocket.rtmp;
+package com.yang.rtmp.web.websocket;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;

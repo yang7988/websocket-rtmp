@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<start-class>com.yang.rtmp.web.websocket.rtmp.WebsocketRtmpDemoApplication</start-class>
+		<start-class>com.yang.rtmp.web.websocket.WebsocketRtmpApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,6 +46,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

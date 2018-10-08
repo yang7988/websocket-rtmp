@@ -1,7 +1,5 @@
-package com.yang.rtmp.web.websocket.rtmp;
+package com.yang.rtmp.web.websocket;
 
-import com.yang.rtmp.web.websocket.web.UdpPullRunable;
-import com.yang.rtmp.web.websocket.web.WebSocketRunnable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
