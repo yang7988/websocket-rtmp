@@ -19,6 +19,9 @@ public class WebSocketRunnable implements Runnable {
 
     public void run() {
         int webSocketPort = 9092;
+        String websocketPath = "/websocket";
+        String subprotocols = "haofei";
+        boolean allowExtensions = true;
         EventLoopGroup workGroupLoop = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
         try {
@@ -27,13 +30,16 @@ public class WebSocketRunnable implements Runnable {
                     .childHandler(new ChannelInitializer<Channel>() {
                         @Override
                         protected void initChannel(Channel ch) throws Exception {
-                            ch.pipeline().addLast("readTimeout", new ReadTimeoutHandler(45)); // 长时间不写会断
+                            // 长时间不写会断
+                            ch.pipeline().addLast("readTimeout", new ReadTimeoutHandler(45));
                             ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec());
                             ch.pipeline().addLast("ChunkedWriter", new ChunkedWriteHandler());
                             ch.pipeline().addLast("HttpAggregator", new HttpObjectAggregator(65535));
-                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler("/websocket", "haofei", true));
-                            ch.pipeline().addLast("WsBinaryDecoder", new WebSocketFrameDecoder()); // ws解码成字节
-                            ch.pipeline().addLast("WsEncoder", new WebSocketFramePrepender()); // 字节编码成ws
+                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler(websocketPath, subprotocols, allowExtensions));
+                            // ws解码成字节
+                            ch.pipeline().addLast("WsBinaryDecoder", new WebSocketFrameDecoder());
+                            // 字节编码成ws
+                            ch.pipeline().addLast("WsEncoder", new WebSocketFramePrepender());
                             ch.pipeline().addLast(new VideoPlayerHandler());
                         }
                     });
@@ -43,7 +49,7 @@ public class WebSocketRunnable implements Runnable {
             }
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } finally {
             workGroupLoop.shutdownGracefully();
         }
