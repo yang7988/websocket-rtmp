@@ -19,9 +19,11 @@ public class UdpPullRunable implements Runnable {
             bossLoop = new NioEventLoopGroup();
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.channel(NioDatagramChannel.class);
-            bootstrap.group(bossLoop).option(ChannelOption.SO_BROADCAST, true)
-                    .option(ChannelOption.SO_SNDBUF, 1024 * 256).option(ChannelOption.SO_RCVBUF, 1024 * 256);
-            bootstrap.handler(new UdpMpegTsHandler());
+            bootstrap.group(bossLoop)
+                     .option(ChannelOption.SO_BROADCAST, true)
+                     .option(ChannelOption.SO_SNDBUF, 1024 * 256)
+                     .option(ChannelOption.SO_RCVBUF, 1024 * 256)
+                     .handler(new UdpMpegTsHandler());
             ChannelFuture future = bootstrap.bind(port).sync();
             if (future.isSuccess()) {
                 logger.info("UDP stream server start at port: " + port + ".");
