@@ -29,12 +29,10 @@
     </appender>
 
     <logger name="com.yang.rtmp.web" level="INFO">
-        <appender-ref ref="STDOUT"/>
         <appender-ref ref="ROLLINGFILE"/>
     </logger>
 
     <root level="INFO">
-        <appender-ref ref="ROLLINGFILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
 
