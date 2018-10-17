@@ -11,9 +11,10 @@ public class WebSocketRtmplService {
 
     @PostConstruct
     public void init() {
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
         executorService.submit(new WebSocketRunnable());
         executorService.submit(new UdpPullRunable());
+        executorService.submit(new PullRtmpStreamRunable());
     }
 
 }

@@ -13,8 +13,30 @@
         </encoder>
     </appender>
 
+    <!-- 按照每天生成日誌文件, 最多保留30天 -->
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/websocket-rtmp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/websocket-rtmp-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+            <charset>${charset}</charset>
+        </encoder>
+
+    </appender>
+
+    <logger name="com.yang.rtmp.web" level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLINGFILE"/>
+    </logger>
+
     <root level="INFO">
+        <appender-ref ref="ROLLINGFILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
+
 
 </configuration>
