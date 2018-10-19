@@ -16,8 +16,7 @@ public class PullRtmpStreamRunable implements Runnable {
         try{
             String catalog = RandomStringUtils.random(6,"abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
             String BASH = "ffmpeg -i rtmp://183.47.216.134/live_hd/" + catalog +
-                    " -max_muxing_queue_size 1024 -f mpegts -codec:v mpeg1video -acodec libfaac -s 960x540 " +
-                    "-b:v 1500k -r 25 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k udp://183.47.216.134:9094";
+                    " -max_muxing_queue_size 1024 -f mpegts -codec:v mpeg1video -s 960x540 -b:v 1500k -r 25 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k udp://183.47.216.134:9094";
             logger.info("rtmp上传目录名: " + catalog);
             logger.info("rtmp协议为: rtmp://183.47.216.134/live_hd/" + catalog);
             logger.info("ffmpeg执行的命令: " + BASH);

@@ -14,7 +14,7 @@ public class WebSocketRtmplService {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         executorService.submit(new WebSocketRunnable());
         executorService.submit(new UdpPullRunable());
-        executorService.submit(new PullRtmpStreamRunable());
+//        executorService.submit(new PullRtmpStreamRunable());
     }
 
 }
