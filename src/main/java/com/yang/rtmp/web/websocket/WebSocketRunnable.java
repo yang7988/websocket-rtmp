@@ -16,11 +16,17 @@ import org.slf4j.LoggerFactory;
 public class WebSocketRunnable implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSocketRunnable.class);
+    private int port;
+    private String path;
+    private String subprotocols;
+
+    public WebSocketRunnable(int port, String path, String subprotocols) {
+        this.port = port;
+        this.path = path;
+        this.subprotocols = subprotocols;
+    }
 
     public void run() {
-        int webSocketPort = 9092;
-        String websocketPath = "/websocket";
-        String subprotocols = "haofei";
         boolean allowExtensions = true;
         EventLoopGroup workGroupLoop = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap();
@@ -35,7 +41,7 @@ public class WebSocketRunnable implements Runnable {
                             ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec());
                             ch.pipeline().addLast("ChunkedWriter", new ChunkedWriteHandler());
                             ch.pipeline().addLast("HttpAggregator", new HttpObjectAggregator(65535));
-                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler(websocketPath, subprotocols, allowExtensions));
+                            ch.pipeline().addLast("WsProtocolHandler", new WebSocketServerProtocolHandler(path, subprotocols, allowExtensions));
                             // ws解码成字节
                             ch.pipeline().addLast("WsBinaryDecoder", new WebSocketFrameDecoder());
                             // 字节编码成ws
@@ -43,9 +49,9 @@ public class WebSocketRunnable implements Runnable {
                             ch.pipeline().addLast(new VideoPlayerHandler());
                         }
                     });
-            ChannelFuture channelFuture = bootstrap.bind(webSocketPort).sync();
+            ChannelFuture channelFuture = bootstrap.bind(port).sync();
             if (channelFuture.isSuccess()) {
-                logger.info("websocket server start at port: " + webSocketPort + ".");
+                logger.info("websocket server start at port: " + port + ".");
             }
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {

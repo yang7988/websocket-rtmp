@@ -11,9 +11,14 @@ import org.slf4j.LoggerFactory;
 
 public class UdpPullRunable implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(UdpPullRunable.class);
+    private int port;
+
+    public UdpPullRunable(int port) {
+        this.port = port;
+    }
+
     @Override
     public void run() {
-        int port = 9094;
         EventLoopGroup bossLoop = null;
         try {
             bossLoop = new NioEventLoopGroup();

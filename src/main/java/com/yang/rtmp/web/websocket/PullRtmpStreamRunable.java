@@ -10,29 +10,36 @@ import java.io.InputStreamReader;
 
 public class PullRtmpStreamRunable implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(PullRtmpStreamRunable.class);
+    private String host;
+    private String params;
+
+    public PullRtmpStreamRunable(String host, String params) {
+        this.host = host;
+        this.params = params;
+    }
 
     @Override
     public void run() {
-        try{
-            String catalog = RandomStringUtils.random(6,"abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-            String BASH = "ffmpeg -i rtmp://183.47.216.134/live_hd/" + catalog +
-                    " -max_muxing_queue_size 1024 -f mpegts -codec:v mpeg1video -s 960x540 -b:v 1500k -r 25 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k udp://183.47.216.134:9094";
+        try {
+            String constant = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String catalog = RandomStringUtils.random(6, constant);
+            String BASH = host + catalog + params;
             logger.info("rtmp上传目录名: " + catalog);
-            logger.info("rtmp协议为: rtmp://183.47.216.134/live_hd/" + catalog);
+            logger.info("rtmp协议为: " + host + catalog);
             logger.info("ffmpeg执行的命令: " + BASH);
-            String[] cmd = { "/bin/sh", "-c", BASH };
+            String[] cmd = {"/bin/sh", "-c", BASH};
             Runtime rt = Runtime.getRuntime();
             //执行命令, 最后一个参数，可以使用new File("path")指定运行的命令的位置
             Process proc = rt.exec(cmd);
-            InputStream stderr =  proc.getInputStream();
-            InputStreamReader isr = new InputStreamReader(stderr,"UTF-8");
+            InputStream stderr = proc.getInputStream();
+            InputStreamReader isr = new InputStreamReader(stderr, "UTF-8");
             BufferedReader br = new BufferedReader(isr);
             String line;
             while ((line = br.readLine()) != null) { // 打印出命令执行的结果
                 logger.info(line);
             }
-        }catch (Exception e){
-            logger.error(e.getMessage(),e);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
 
     }
