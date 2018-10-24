@@ -23,7 +23,7 @@ public class PullRtmpStreamRunable implements Runnable {
         try {
             String constant = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             String catalog = RandomStringUtils.random(6, constant);
-            String BASH = host + catalog + params;
+            String BASH = host + catalog + " "+params;
             logger.info("rtmp上传目录名: " + catalog);
             logger.info("rtmp协议为: " + host + catalog);
             logger.info("ffmpeg执行的命令: " + BASH);
