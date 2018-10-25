@@ -20,7 +20,7 @@ public class WebSocketRtmplService {
         executorService.submit(new WebSocketRunnable(configuration.getWebsocketPort()
                 ,configuration.getWebsocketPath(),configuration.getWebsocketSubprotocols()));
         executorService.submit(new UdpPullRunable(configuration.getUdpPort()));
-        executorService.submit(new PullRtmpStreamRunable(configuration.getRtmpHost(),configuration.getPullRtmpParams()));
+//        executorService.submit(new PullRtmpStreamRunable(configuration.getRtmpHost(),configuration.getPullRtmpParams()));
     }
 
 }

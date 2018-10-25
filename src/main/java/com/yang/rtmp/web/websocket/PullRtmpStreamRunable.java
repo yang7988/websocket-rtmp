@@ -21,6 +21,7 @@ public class PullRtmpStreamRunable implements Runnable {
     @Override
     public void run() {
         try {
+
             String constant = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             String catalog = RandomStringUtils.random(6, constant);
             String BASH = host + catalog + " "+params;
