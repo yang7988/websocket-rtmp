@@ -3,3 +3,8 @@
 2018-10-30 15:20:15.923 [pool-2-thread-1] INFO  c.y.r.w.websocket.WebSocketRunnable 54 - websocket server start at port: 9092.
 2018-10-30 15:20:15.923 [pool-2-thread-2] INFO  c.y.r.web.websocket.UdpPullRunable 34 - UDP stream server start at port: 9094.
 2018-10-30 15:20:16.285 [main] INFO  c.y.r.w.w.WebsocketRtmpApplication 57 - Started WebsocketRtmpApplication in 2.024 seconds (JVM running for 3.122)
+2018-10-31 13:19:51.712 [main] INFO  c.y.r.w.w.WebsocketRtmpApplication 48 - Starting WebsocketRtmpApplication on xuyangyang with PID 49420 (E:\github\websocket-rtmp-server\target\classes started by xuyangyang in E:\github\websocket-rtmp-server)
+2018-10-31 13:19:51.716 [main] INFO  c.y.r.w.w.WebsocketRtmpApplication 637 - No active profile set, falling back to default profiles: default
+2018-10-31 13:19:53.122 [pool-1-thread-2] INFO  c.y.r.web.websocket.UdpPullRunable 34 - UDP stream server start at port: 9094.
+2018-10-31 13:19:53.122 [pool-1-thread-1] INFO  c.y.r.w.websocket.WebSocketRunnable 54 - websocket server start at port: 9092.
+2018-10-31 13:19:53.498 [main] INFO  c.y.r.w.w.WebsocketRtmpApplication 57 - Started WebsocketRtmpApplication in 1.988 seconds (JVM running for 2.571)
