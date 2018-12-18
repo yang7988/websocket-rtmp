@@ -15,12 +15,14 @@
     <script type="text/javascript" src="/js/jsmpeg.min.js" ></script>
     <script type="text/javascript">
         var canvas = document.getElementById('video-canvas');
-        var url = 'ws://' + '183.47.216.134:9092/websocket';
+        // var url = 'ws://' + '183.47.216.157:9092/websocket';
+        var url = 'ws://' + 'gm.pull.xfkjd.cn:9092/websocket';
         var config = {
             canvas: canvas,
             autoplay: true,
             audio: false,
             video: true,
+            videoBufferSize:10*1024*1024,
             protocols: 'haofei',};
         var player = new JSMpeg.Player(url, config);
 
